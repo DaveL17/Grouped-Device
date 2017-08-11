@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class Plugin(indigo.PluginBase):
     def __init__(self, pluginId, pluginDisplayName, pluginVersion, pluginPrefs):
         super(Plugin, self).__init__(pluginId, pluginDisplayName, pluginVersion, pluginPrefs)
@@ -108,5 +109,3 @@ class Plugin(indigo.PluginBase):
         newdev.subModel = "Sub Model 3"
         newdev.name = u"{0} Device 3".format(name)
         newdev.replaceOnServer()
-        
-        

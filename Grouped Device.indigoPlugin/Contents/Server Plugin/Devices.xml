@@ -31,13 +31,6 @@
 				<Label>Setting:</Label>
 			</Field>
 		</ConfigUI>
-		<States>
-			<State id="name">
-				<ValueType>String</ValueType>
-				<TriggerLabel>Name</TriggerLabel>
-				<ControlPageLabel>Name</ControlPageLabel>
-			</State>
-		</States>
 	</Device>
 	
 	<Device type="custom" id="Device2">
