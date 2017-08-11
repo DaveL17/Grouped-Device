@@ -26,14 +26,15 @@ class Plugin(indigo.PluginBase):
 
     # ##### Device Factory Config Methods #####
     def getDeviceFactoryUiValues(self, devIdList):
-        """ Called when the device factory config UI is first opened. This method can be used to populate the dialog
-        with whatever values are needed. Optional. """
+        """ Called when the device factory config UI is first opened. This
+        method can be used to populate the dialog with whatever values are
+        needed. Optional. """
         self.debugLog(u"getDeviceFactoryUiValues called")
                 
         valuesDict = indigo.Dict()
         errorMsgDict = indigo.Dict()
         
-        # Retrieve the 'name' parameter from storage (in device 1's props). 
+        # Retrieve the 'name' parameter from storage (in device 1's props).
         if len(devIdList) > 0:
             dev = indigo.devices[devIdList[0]]
             valuesDict['name'] = dev.pluginProps['name']
@@ -41,7 +42,8 @@ class Plugin(indigo.PluginBase):
         return (valuesDict, errorMsgDict)
         
     def validateDeviceFactoryUi(self, valuesDict, devIdList):
-        """ Called when the device factory config UI 'save' button is clicked. Optional. """
+        """ Called when the device factory config UI 'save' button is clicked.
+        Optional. """
         self.debugLog(u"validateDeviceFactoryUi called")
         name = valuesDict['name']
 
@@ -54,7 +56,8 @@ class Plugin(indigo.PluginBase):
         return (True, valuesDict)
 
     def closedDeviceFactoryUi(self, valuesDict, userCancelled, devIdList):
-        """ Called when the device factory config UI is closed (called after validateDeviceFactoryUi(). Optional. """
+        """ Called when the device factory config UI is closed (called after
+        validateDeviceFactoryUi(). Optional. """
         self.debugLog(u"closedDeviceFactoryUi called")
         
         return valuesDict
@@ -73,14 +76,19 @@ class Plugin(indigo.PluginBase):
         return (True, valuesDict)
         
     def closedDeviceConfigUi(self, valuesDict, userCancelled, typeId, devId):
-        """ Called when the device factory config UI is closed (called after validateDeviceConfigUi(). Optional. 
-        If something has changed, the device will be restarted by a call to deviceStartComm(). """
+        """ Called when the device factory config UI is closed (called after
+        validateDeviceConfigUi(). Optional. If something has changed, the
+        device will be restarted by a call to deviceStartComm(). """
         self.debugLog(u"closedDeviceConfigUi called")
 
         return (True, valuesDict)
         
     def createTheDeviceGroup(self, name):
-        """ Convenience method for device creation. This could also be done in closedDeviceFactoryUi() for example. """
+        """ Convenience method for device creation. This could also be done in
+        closedDeviceFactoryUi() for example. Note that some device props are
+        read only even when you create them from scratch (i.e., dev.version)
+        and some will be ignored if you try to set them (i.e., dev.description,
+        dev.errorState). """
         self.debugLog(u"createTheDeviceGroup called")
         
         # Create the first device in the group.
@@ -89,13 +97,14 @@ class Plugin(indigo.PluginBase):
         newdev.subModel = "Sub Model 1"
         newdev.name = u"{0} Device 1".format(name)
         newdev.replaceOnServer()
-        
+
         # Add the group name setting to the props of device 1 for later use.
         newprops = newdev.pluginProps
         newprops['name'] = name
         newdev.replacePluginPropsOnServer(newprops)
         
-        # Create the second device in the group. You can also add a state value here if desired.
+        # Create the second device in the group. You can also add a state value
+        # here if desired.
         newdev = indigo.device.create(indigo.kProtocol.Plugin, deviceTypeId="Device2")
         newdev.model = "Device 2 Model"
         newdev.subModel = "Sub Model 2"
@@ -103,7 +112,8 @@ class Plugin(indigo.PluginBase):
         newdev.replaceOnServer()
         newdev.updateStateOnServer('state', value="Some value.")
     
-        # You can also create devices that don't have corresponding device parameters established in Devices.xml.
+        # You can also create devices that don't have corresponding device
+        # parameters established in Devices.xml.
         newdev = indigo.device.create(indigo.kProtocol.Plugin, deviceTypeId="Device3")
         newdev.model = "Device 3 Model"
         newdev.subModel = "Sub Model 3"

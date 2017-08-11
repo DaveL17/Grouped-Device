@@ -2,46 +2,46 @@
 
 <Devices>
 
-	<DeviceFactory>
-		<Name>Plugin Device Group</Name>
-		<ButtonTitle>Create</ButtonTitle>
+    <DeviceFactory>
+        <Name>Plugin Device Group</Name>
+        <ButtonTitle>Create</ButtonTitle>
         <!-- A configUI is required for the device factory element. -->
-		<ConfigUI>
-			<Field id="label" type="label">
-				<Label>It is not required to have settings here, but a configUI is required. These will be stored in self.pluginPrefs and will apply to all grouped devices created with the plugin.</Label>
-			</Field>
-			<Field id="name" type="textfield">
-				<Label>Name:</Label>
-			</Field>
-		</ConfigUI>
-	</DeviceFactory>
-	
-	<Device type="custom" id="Device1">
+        <ConfigUI>
+            <Field id="label" type="label">
+                <Label>It is not required to have settings here, but a configUI is required. These will be stored in self.pluginPrefs and will apply to all grouped devices created with the plugin.</Label>
+            </Field>
+            <Field id="name" type="textfield">
+                <Label>Name:</Label>
+            </Field>
+        </ConfigUI>
+    </DeviceFactory>
+    
+    <Device type="custom" id="Device1">
     <!-- Note that devices can have their own configUIs -->
-		<Name>Device 1</Name>
-		<ConfigUI>
-			<Field id="label" type="label">
-				<Label>It is not required to have a configUI for each individual device, however, creating a settings device allows for settings that apply only to that group (when more than one grouped device is desired). These will be stored in dev.pluginProps.</Label>
-			</Field>
+        <Name>Device 1</Name>
+        <ConfigUI>
+            <Field id="label" type="label">
+                <Label>It is not required to have a configUI for each individual device, however, creating a settings device allows for settings that apply only to that group (when more than one grouped device is desired). These will be stored in dev.pluginProps.</Label>
+            </Field>
             <!-- Save the name to a hidden setting for later use (i.e., in renaming devices.  -->
-			<Field id="name" type="textfield" hidden="true">
-				<Label>Name:</Label>
-			</Field>
-			<Field id="setting" type="textfield" hidden="false">
-				<Label>Setting:</Label>
-			</Field>
-		</ConfigUI>
-	</Device>
-	
-	<Device type="custom" id="Device2">
-		<Name>Device 2</Name>
-		<States>
-			<State id="state">
-				<ValueType>String</ValueType>
-				<TriggerLabel>State</TriggerLabel>
-				<ControlPageLabel>State</ControlPageLabel>
-			</State>
-		</States>
-	</Device>
-	
+            <Field id="name" type="textfield" hidden="true">
+                <Label>Name:</Label>
+            </Field>
+            <Field id="setting" type="textfield" hidden="false">
+                <Label>Setting:</Label>
+            </Field>
+        </ConfigUI>
+    </Device>
+    
+    <Device type="custom" id="Device2">
+        <Name>Device 2</Name>
+        <States>
+            <State id="state">
+                <ValueType>String</ValueType>
+                <TriggerLabel>State</TriggerLabel>
+                <ControlPageLabel>State</ControlPageLabel>
+            </State>
+        </States>
+    </Device>
+    
 </Devices>
